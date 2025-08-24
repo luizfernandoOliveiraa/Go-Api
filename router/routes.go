@@ -1,44 +1,24 @@
 package router
 
 import (
-	"net/http"
-
 	"github.com/gin-gonic/gin"
+	"github.com/luizfernandoOliveiraa/Go-Api/handler"
 )
 
 func initializeRoutes(router *gin.Engine) {
 
 	v1 := router.Group("/api/v1")
 	{
-		v1.GET("/oppening", func(ctx *gin.Context) {
-			ctx.JSON(http.StatusOK, gin.H{
-				"message": "GET Opening",
-			})
-		})
+		v1.GET("/oppening", handler.ShowOpeningHanlder())
 
-		v1.POST("/oppening", func(ctx *gin.Context) {
-			ctx.JSON(http.StatusOK, gin.H{
-				"message": "POST Opening",
-			})
-		})
+		v1.POST("/oppening", handler.CreateOpeningHanlder())
 
-		v1.DELETE("/oppening", func(ctx *gin.Context) {
-			ctx.JSON(http.StatusOK, gin.H{
-				"message": "DELETE Opening",
-			})
-		})
+		v1.DELETE("/oppening", handler.DeleteOpeningHanlder())
 
-		v1.PUT("/oppening", func(ctx *gin.Context) {
-			ctx.JSON(http.StatusOK, gin.H{
-				"message": "PUT Opening",
-			})
-		})
+		v1.PUT("/oppening", handler.UpdateOpeningHanlder())
 
-		v1.GET("/oppenings", func(ctx *gin.Context) {
-			ctx.JSON(http.StatusOK, gin.H{
-				"message": "GET Openings",
-			})
-		})
+		v1.GET("/oppenings", handler.ListOpeningsHanlder())
+
 	}
 
 }
